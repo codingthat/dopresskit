@@ -223,7 +223,7 @@ echo '<!DOCTYPE html>
 					<a class="nav-header" href="http://'. parseLink(COMPANY_WEBSITE) .'">'. trim( parseLink(COMPANY_WEBSITE), "/") .'</a>
 					<ul class="uk-nav uk-nav-side">';
 
-if (count(TranslateTool::getLanguages()) > 1) {
+if (count(TranslateTool::getLanguages() ?? []) > 1) {
 	echo '<li class="language-select"><a>'. tl('Language: ') .'<select onchange="document.location = \'index.php?l=\'+ this.value;">';
 	foreach (TranslateTool::getLanguages() as $tag => $name)
 	{
@@ -240,10 +240,10 @@ echo '					<li><a href="#factsheet">'. tl('Factsheet') .'</a></li>
 						<li><a href="#trailers">'. tl('Videos') .'</a></li>
 						<li><a href="#images">'. tl('Images') .'</a></li>
 						<li><a href="#logo">'. tl('Logo & Icon') .'</a></li>';
-						if( count($awards) > 0 ) echo'<li><a href="#awards">'. tl('Awards & Recognition') .'</a></li>';
-						if( count($quotes) > 0 ) echo '<li><a href="#quotes">'. tl('Selected Articles') .'</a></li>';
+						if( count($awards ?? []) > 0 ) echo'<li><a href="#awards">'. tl('Awards & Recognition') .'</a></li>';
+						if( count($quotes ?? []) > 0 ) echo '<li><a href="#quotes">'. tl('Selected Articles') .'</a></li>';
 
-if( count($additionals) > 0 ) {
+if( count($additionals ?? []) > 0 ) {
 	echo '<li><a href="#links">'. tl('Additional Links') .'</a></li>';
 }
 
@@ -280,7 +280,7 @@ echo '					<div class="uk-grid">
 							<p>
 								<strong>'. tl('Social:') .'</strong><br/>';
 
-for( $i = 0; $i < count($socials); $i++ )
+for( $i = 0; $i < count($socials ?? []); $i++ )
 {
 	$name = $link = "";
 
@@ -308,10 +308,10 @@ closedir($handle);
 echo '							</p>
 							<p>';
 
-if( count($address) > 0 )
+if( count($address ?? []) > 0 )
 {
 	echo '<strong>'. tl('Address:') .'</strong><br/>';
-	for( $i = 0; $i < count($address); $i++ )
+	for( $i = 0; $i < count($address ?? []); $i++ )
 	{
 		echo $address[$i].'<br/>';
 	}
@@ -328,7 +328,7 @@ echo'							</p>
 							<p>'. COMPANY_DESCRIPTION .'</p>
 							<h2 id="history">'. tl('History') .'</h2>';
 
-for( $i = 0; $i < count($histories); $i++ )
+for( $i = 0; $i < count($histories ?? []); $i++ )
 {
 	$header = $text ="";
 
@@ -361,13 +361,13 @@ echo '							</ul>
 
 					<h2 id="trailers">'. tl('Videos') .'</h2>';
 
-if( count($trailers) == 0 )
+if( count($trailers ?? []) == 0 )
 {
 	echo '<p>'. tlHtml('There are currently no trailers available for %s. Check back later for more or <a href="#contact">contact us</a> for specific requests!', COMPANY_TITLE) .'</p>';
 }
 else
 {
-	for( $i = 0; $i < count($trailers); $i++ )
+	for( $i = 0; $i < count($trailers ?? []); $i++ )
 	{
 		$name = $youtube = $vimeo = $mov = $mp4 = "";
 		$ytfirst = -1;
@@ -501,12 +501,12 @@ if( !file_exists('images/logo.png') && !file_exists('images/icon.png')) {
 
 echo '					<hr>';
 
-if( count( $awards ) > 0 )
+if( count( $awards  ?? []) > 0 )
 {
 	echo('<h2 id="awards">'. tl('Awards & Recognition') .'</h2>
 					<ul>');
 
-for( $i = 0; $i < count($awards); $i++ )
+for( $i = 0; $i < count($awards ?? []); $i++ )
 {
 	$description = $info = "";
 
@@ -525,12 +525,12 @@ for( $i = 0; $i < count($awards); $i++ )
 echo('</ul><hr>');
 }
 
-if( count($quotes) > 0 )
+if( count($quotes ?? []) > 0 )
 {
 	echo '					<h2 id="quotes">'. tl('Selected Articles') .'</h2>
 						<ul>';
 	
-	for( $i = 0; $i < count($quotes); $i++ )
+	for( $i = 0; $i < count($quotes ?? []); $i++ )
 	{
 		$description = $name = $website = $link = "";
 	
@@ -553,10 +553,10 @@ if( count($quotes) > 0 )
 	echo '</ul><hr>';
 }
 
-if( count($additionals) > 0 ) {
+if( count($additionals ?? []) > 0 ) {
 	echo '<h2 id="links">'. tl('Additional Links') .'</h2>';
 
-	for( $i = 0; $i < count($additionals); $i++ )
+	for( $i = 0; $i < count($additionals ?? []); $i++ )
 	{
 		$title = $description = $link = $linkTitle = "";
 
@@ -591,7 +591,7 @@ echo '					<div class="uk-grid">
 						<div class="uk-width-medium-1-2">
 							<h2 id="credits">'. tl('Team & Repeating Collaborators') .'</h2>';
 
-for( $i = 0; $i < count($credits); $i++ )
+for( $i = 0; $i < count($credits ?? []); $i++ )
 {
 	$previous = $website = $person = $role = "";
 	foreach( $credits[$i]['credit']->children() as $child )
@@ -625,7 +625,7 @@ echo '						</div>
 						<div class="uk-width-medium-1-2">
 							<h2 id="contact">'. tl('Contact') .'</h2>';
 
-for( $i = 0; $i < count($contacts); $i++ )
+for( $i = 0; $i < count($contacts ?? []); $i++ )
 {
 	$link = $mail = $name = "";
 	foreach( $contacts[$i]['contact']->children() as $child )

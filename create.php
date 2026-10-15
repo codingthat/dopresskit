@@ -140,7 +140,7 @@ if( $state == 'upgrade' )
 
 		if( $files = glob("images/*.png") )
 		{
-			if( count($files) > 0 )
+			if( count($files ?? []) > 0 )
 			{
 				$found = 0;
 				foreach( $files as $file )
@@ -173,7 +173,7 @@ if( $state == 'upgrade' )
 			$todo['optional']['logo.zip']['done'] = True;
 		}
 
-		if( count(glob("trailers/*.mov")) + count(glob("trailers/*.mp4")) > 0 )
+		if( count(glob("trailers/*.mov" ?? [])) + count(glob("trailers/*.mp4" ?? [])) > 0 )
 		{
 			$todo['optional']['trailers']['done'] = True;
 		}
@@ -271,7 +271,7 @@ Don\'t forget that you can always rename the data.xml file back to _data.xml to 
 
 		if( $files = glob("images/*.png") )
 		{
-			if( count($files) > 0 )
+			if( count($files ?? []) > 0 )
 			{
 				$found = 0;
 				foreach( $files as $file )
@@ -304,7 +304,7 @@ Don\'t forget that you can always rename the data.xml file back to _data.xml to 
 			$todo['optional']['logo.zip']['done'] = True;
 		}
 
-		if( count(glob("trailers/*.mov")) + count(glob("trailers/*.mp4")) > 0 )
+		if( count(glob("trailers/*.mov" ?? [])) + count(glob("trailers/*.mp4" ?? [])) > 0 )
 		{
 			$todo['optional']['trailers']['done'] = True;
 		}

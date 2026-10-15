@@ -369,7 +369,7 @@ echo '<!DOCTYPE html>
 					<a class="nav-header" href="index.php'. $languageQuery .'" target="_self">'. tl('press kit') .'</a></strong>
 					<ul class="uk-nav uk-nav-side">';
 
-if (count(TranslateTool::getLanguages()) > 1) {
+if (count(TranslateTool::getLanguages() ?? []) > 1) {
 	echo '<li class="language-select"><a>'. tl('Language: ') .'<select onchange="document.location = \'sheet.php?p='. htmlspecialchars($game) .'&l=\'+ this.value;">';
 	foreach (TranslateTool::getLanguages() as $tag => $name)
 	{
@@ -385,8 +385,8 @@ echo '					<li><a href="#factsheet">'. tl('Factsheet') .'</a></li>
 						<li><a href="#trailers">'. tl('Videos') .'</a></li>
 						<li><a href="#images">'. tl('Images') .'</a></li>
 						<li><a href="#logo">'. tl('Logo & Icon') .'</a></li>';
-if( count($promoterawards) + count($awards) > 0 ) echo('<li><a href="#awards">'. tl('Awards & Recognition') .'</a></li>');
-if( count($promoterquotes) + count($quotes) > 0 ) echo('<li><a href="#quotes">'. tl('Selected Articles') .'</a></li>');
+if( count($promoterawards ?? []) + count($awards ?? []) > 0 ) echo('<li><a href="#awards">'. tl('Awards & Recognition') .'</a></li>');
+if( count($promoterquotes ?? []) + count($quotes ?? []) > 0 ) echo('<li><a href="#quotes">'. tl('Selected Articles') .'</a></li>');
 if( $press_request == TRUE) { echo '<li><a href="#preview">'. tl('Request Press Copy') .'</a></li>'; }
 if( $monetize >= 1) { echo '<li><a href="#monetize">'. tl('Monetization Permission') .'</a></li>'; }
 echo '						<li><a href="#links">'. tl('Additional Links') .'</a></li>
@@ -417,7 +417,7 @@ echo '					<div class="uk-grid">
 							<p>
 								<strong>'. tl('Platforms:'). '</strong><br />';
 
-for( $i = 0; $i < count($platforms); $i++ )
+for( $i = 0; $i < count($platforms ?? []); $i++ )
 {
 	$name = $link = "";
 	foreach( $platforms[$i]['platform']->children() as $child )
@@ -439,14 +439,14 @@ echo '							</p>
 							<p>
 								<strong>'. tl('Regular Price:'). '</strong><br/>';
 
-if( count($prices) == 0 )
+if( count($prices ?? []) == 0 )
 {
 	echo '-';
 }
 else
 {
 	echo '<table>';
-	for( $i = 0; $i < count($prices); $i++ )
+	for( $i = 0; $i < count($prices ?? []); $i++ )
 	{
 		$currency = $value = "";
 
@@ -470,7 +470,7 @@ echo'							</p>
 							<p>'. GAME_DESCRIPTION .'</p>
 							<h2 id="history">'. tl('History'). '</h2>';
 
-for( $i = 0; $i < count($histories); $i++ )
+for( $i = 0; $i < count($histories ?? []); $i++ )
 {
 	$header = $text ="";
 
@@ -487,7 +487,7 @@ if( defined("GAME_HISTORY") ) {
 	echo '<p>'. GAME_HISTORY .'</p>';
 }
 
-for( $i = 0; $i < count($histories); $i++ ) {
+for( $i = 0; $i < count($histories ?? []); $i++ ) {
 	$header = $text ="";
 
 	foreach( $histories[$i]['history']->children() as $child )
@@ -504,7 +504,7 @@ for( $i = 0; $i < count($histories); $i++ ) {
 echo '							<h2>'. tl('Features'). '</h2>
 							<ul>';
 
-for( $i = 0; $i < count($features); $i++ )
+for( $i = 0; $i < count($features ?? []); $i++ )
 {
 	echo '<li>'.$features[$i].'</li>';
 }
@@ -517,13 +517,13 @@ echo '							</ul>
 
 					<h2 id="trailers">'. tl('Videos'). '</h2>';
 
-if( count($trailers) == 0 )
+if( count($trailers ?? []) == 0 )
 {
 	echo '<p>'. tlHtml('There are currently no trailers available for %s. Check back later for more or <a href="#contact">contact us</a> for specific requests!', GAME_TITLE) .'</p>';
 }
 else
 {
-	for( $i = 0; $i < count($trailers); $i++ )
+	for( $i = 0; $i < count($trailers ?? []); $i++ )
 	{
 		$name = $youtube = $vimeo = $mov = $mp4 = "";
 		$ytfirst = -1;
@@ -659,16 +659,16 @@ if( !file_exists($game.'/images/logo.png') && !file_exists($game.'/images/icon.p
 	echo '<p>'. tlHtml('There are currently no logos or icons available for %s. Check back later for more or <a href="#contact">contact us</a> for specific requests!', GAME_TITLE) .'</p>';
 }
 
-if( count( $promoterawards ) + count( $awards ) > 0 )
+if( count( $promoterawards  ?? []) + count( $awards  ?? []) > 0 )
 {
 	echo '<hr>';
 
 	echo('<h2 id="awards">'. tl('Awards & Recognition') .'</h2>');
 	echo('<ul>');
 
-	if( count($promoterawards) >= 0 )
+	if( count($promoterawards ?? []) >= 0 )
 	{
-		for( $i = 0; $i < count($promoterawards); $i++ )
+		for( $i = 0; $i < count($promoterawards ?? []); $i++ )
 		{
 			$description = $info = "";
 			foreach( $promoterawards[$i]['award']->children() as $child )
@@ -687,9 +687,9 @@ if( count( $promoterawards ) + count( $awards ) > 0 )
 		}			
 	}
 	
-	if( count($awards) > 0 )
+	if( count($awards ?? []) > 0 )
 	{
-		for( $i = 0; $i < count($awards); $i++ )
+		for( $i = 0; $i < count($awards ?? []); $i++ )
 		{
 			$description = $info = "";
 			foreach( $awards[$i]['award']->children() as $child )
@@ -708,16 +708,16 @@ if( count( $promoterawards ) + count( $awards ) > 0 )
 	echo '<hr>';
 }
 
-if( count($promoterquotes) + count($quotes) > 0 )
+if( count($promoterquotes ?? []) + count($quotes ?? []) > 0 )
 {
 	echo '					<hr>
 			
 						<h2>'. tl('Selected Articles') .'</h2>
 						<ul>';
 
-	if( count($promoterquotes) >= 0 )
+	if( count($promoterquotes ?? []) >= 0 )
 	{
-		for( $i = 0; $i < count($promoterquotes); $i++ )
+		for( $i = 0; $i < count($promoterquotes ?? []); $i++ )
 		{
 			$name = $description = $website = $link = "";
 			foreach( $promoterquotes[$i]['review']->children() as $child )
@@ -737,9 +737,9 @@ if( count($promoterquotes) + count($quotes) > 0 )
 		}
 	}
 	
-	if( count($quotes) > 0 )
+	if( count($quotes ?? []) > 0 )
 	{
-		for( $i = 0; $i < count($quotes); $i++ )
+		for( $i = 0; $i < count($quotes ?? []); $i++ )
 		{
 			$name = $description = $website = $link = "";
 			foreach( $quotes[$i]['quote']->children() as $child )
@@ -835,7 +835,7 @@ if( $monetize >= 1 )
 
 echo '					<h2 id="links">'. tl('Additional Links'). '</h2>';
 		
-for( $i = 0; $i < count($additionals); $i++ )
+for( $i = 0; $i < count($additionals ?? []); $i++ )
 {
 	$title = $description = $link = $linkTitle = "";
 	foreach( $additionals[$i]['additional']->children() as $child )
@@ -885,7 +885,7 @@ echo '					<hr>
 						<div class="uk-width-medium-1-2">
 							<h2 id="credits">'. tl('%s Credits', GAME_TITLE) .'</h2>';
 
-for( $i = 0; $i < count($credits); $i++ )
+for( $i = 0; $i < count($credits ?? []); $i++ )
 {
 	$previous = $website = $person = $role = "";
 	foreach( $credits[$i]['credit']->children() as $child )
@@ -919,7 +919,7 @@ echo '						</div>
 						<div class="uk-width-medium-1-2">
 							<h2 id="contact">'. tl('Contact') .'</h2>';
 
-for( $i = 0; $i < count($contacts); $i++ )
+for( $i = 0; $i < count($contacts ?? []); $i++ )
 {
 	$link = $mail = $name = "";
 	foreach( $contacts[$i]['contact']->children() as $child )

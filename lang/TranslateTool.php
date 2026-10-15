@@ -99,7 +99,7 @@ class TranslateTool
 		}
 		self::$_translated[$defaultText] = $text;
 		
-		if (count($args) > 0)
+		if (count($args ?? []) > 0)
 		{
 			$text = vsprintf($text, $args);
 		}

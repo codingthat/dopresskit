@@ -50,7 +50,7 @@ if( ini_get('safe_mode') )
 $upgrade = 0;
 
 $file_needed = 0;
-if( count( glob( "*.*" ) ) > 3 )
+if( count( glob( "*.*"  ?? []) ) > 3 )
 {
 	if( file_exists('data.xml') )
 	{
