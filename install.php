@@ -43,7 +43,7 @@ function dl_r($local_file) {
 	
 if( ini_get('safe_mode') )
 {
-	echo('<h1>Server Environment Check Failed: PHP Safe Mode Enabled</h1><p>Sadly, you or your host seem to have enabled PHP Safe Mode. PHP Safe Mode results in unexpected behaviour with user-installed scripts on your server and might cause presskit() to not function correctly. Please upgrade to PHP 5.4.0 or later or disable Safe Mode to continue.</p><p>If you cannot disable Safe Mode nor upgrade and are comfortable installing scripts, please download the <a href="http://ramiismail.com/kit/press/manual-install.zip">manual installation package</a>.</p>');
+	echo('<h1>Server Environment Check Failed: PHP Safe Mode Enabled</h1><p>Sadly, you or your host seem to have enabled PHP Safe Mode. PHP Safe Mode results in unexpected behaviour with user-installed scripts on your server and might cause presskit() to not function correctly. Please upgrade to PHP 5.4.0 or later or disable Safe Mode to continue.</p><p>If you cannot disable Safe Mode nor upgrade and are comfortable installing scripts, please download the <a href="https://ramiismail.com/kit/press/manual-install.zip">manual installation package</a>.</p>');
 	die();
 }
 	

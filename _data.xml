@@ -4,7 +4,7 @@
 <game>	
 	<title>Company Name</title>
 	<founding-date>September 1, 2010</founding-date>
-	<website>http://www.website.com/</website>
+	<website>https://www.website.com/</website>
 	<based-in>Cityville, Metropolisland</based-in>
 	
 	<press-contact>press-contact@company.com</press-contact>
@@ -81,25 +81,25 @@
 			<description>This is a rather insignificant quote by a highly important person.</description>
 			<name>Person Name</name>
 			<website>Website</website>
-			<link>http://www.website.com/</link>
+			<link>https://www.website.com/</link>
 		</quote>
 		<quote>
 			<description>An extremely positive quote from a rather insignificant person. Also great.</description>
 			<name>Some Guy</name>
 			<website>This Page Is Visited By 12 Visitors A Month</website>
-			<link>http://geocities.blog.com/</link>
+			<link>https://geocities.blog.com/</link>
 		</quote>
 		<quote>
 			<description>I pretend to love this game even though I do not actually understand it.</description>
 			<name>Pretentious Bastard</name>
 			<website>Artsy Page</website>
-			<link>http://art.tumblr.com/</link>
+			<link>https://art.tumblr.com/</link>
 		</quote>
 		<quote>
 			<description>HOLY SHIT SO AMAZING</description>
 			<name>Caps Guy</name>
 			<website>Angry Review</website>
-			<link>http://thispage.net/angrytube</link>
+			<link>https://thispage.net/angrytube</link>
 		</quote>
 	</quotes>
 	
@@ -112,7 +112,7 @@
 		<additional>
 			<title>Company Link #1</title>
 			<description>This link is a link that might be useful. You can check it out at</description>
-			<link>http://somemusicsite.com/thislink</link>
+			<link>https://somemusicsite.com/thislink</link>
 		</additional>
 	</additionals>
 	
@@ -140,11 +140,11 @@
 		</contact>
 		<contact>
 			<name>Twitter</name>
-			<link>http://twitter.com/MyCompanyName</link>
+			<link>https://twitter.com/MyCompanyName</link>
 		</contact>
 		<contact>
 			<name>Facebook</name>
-			<link>http://facebook.com/MyCompanyName</link>
+			<link>https://facebook.com/MyCompanyName</link>
 		</contact>
 		<contact>
 			<name>Web</name>
